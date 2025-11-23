@@ -1,0 +1,71 @@
+{
+  "name": "unplugin-oxc-minifier",
+  "type": "module",
+  "version": "0.0.1-beta.1",
+  "description": "Unofficial unplugin for oxc-minifier package of oxidation compiler tools",
+  "author": "Alex Peshkov <1alexpeshkov@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/mnenie/unplugin-oxc-minifier#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mnenie/unplugin-oxc-minifier.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mnenie/unplugin-oxc-minifier/issues"
+  },
+  "keywords": [
+    "oxc",
+    "minifier",
+    "oxc-minifier",
+    "unplugin-oxc-minifier",
+    "unplugin",
+    "webpack",
+    "vite",
+    "rollup",
+    "esbuild"
+  ],
+  "main": "index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsdown",
+    "watch": "tsdown --watch",
+    "lint": "eslint --cache .",
+    "lint:fix": "nr lint --fix",
+    "taze:check": "taze",
+    "taze:update": "taze --write --install",
+    "test": "vitest",
+    "test:coverage": "nr test --coverage",
+    "release": "bumpp",
+    "lint-staged": "lint-staged",
+    "pre-commit": "nr lint-staged && nr test run",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "oxc-minify": "^0.98.0",
+    "unplugin": "^2.3.11"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^6.2.0",
+    "@antfu/ni": "^27.0.1",
+    "@antfu/utils": "^9.3.0",
+    "@types/node": "^24.10.1",
+    "bumpp": "^10.3.1",
+    "eslint": "^9.39.1",
+    "execa": "^9.6.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
+    "rollup": "^4.53.3",
+    "taze": "^19.9.0",
+    "tsdown": "^0.16.6",
+    "typescript": "^5.9.3",
+    "unplugin-utils": "^0.3.1",
+    "vitest": "^4.0.13"
+  },
+  "lint-staged": {
+      "*.{js,ts}": [
+        "nr lint:fix"
+      ]
+    }
+}
