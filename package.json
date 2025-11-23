@@ -64,8 +64,8 @@
     "vitest": "^4.0.13"
   },
   "lint-staged": {
-      "*.{js,ts}": [
-        "nr lint:fix"
-      ]
-    }
+    "*.{[cm]?[jt]s,json}": [
+      "nr lint"
+    ]
+  }
 }
