@@ -8,7 +8,6 @@ export default antfu(
     typescript: true,
   },
   {
-    files: ['**/core/**/*.ts'],
     rules: {
       'no-console': 'error',
       'no-alert': 'error',
