@@ -24,10 +24,22 @@
     "rollup",
     "esbuild"
   ],
-  "main": "index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.cts",
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsdown",
     "watch": "tsdown --watch",
@@ -39,6 +51,7 @@
     "test:coverage": "nr test --coverage",
     "release": "bumpp",
     "lint-staged": "lint-staged",
+    "prebuild": "nr test run",
     "pre-commit": "nr lint-staged && nr test run",
     "prepare": "husky"
   },
