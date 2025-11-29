@@ -69,7 +69,6 @@ export default {
 import OxcMinifier from 'unplugin-oxc-minifier/rspack'
 
 export default {
-  /* ... */
   plugins: [
     OxcMinifier()
   ]
