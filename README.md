@@ -29,7 +29,7 @@ export default defineConfig({
 })
 ```
 
-<br></details>
+</details>
 
 <details>
 <summary>Rollup</summary><br>
@@ -44,7 +44,7 @@ export default {
 }
 ```
 
-<br></details>
+</details>
 
 <details>
 <summary>Webpack</summary><br>
@@ -59,7 +59,7 @@ export default {
 }
 ```
 
-<br></details>
+</details>
 
 
 <details>
@@ -76,7 +76,7 @@ export default {
 }
 ```
 
-<br></details>
+</details>
 
 
 <details>
@@ -92,7 +92,7 @@ build({
 })
 ```
 
-<br></details>
+</details>
 
 <details>
 <summary>Rolldown</summary><br>
@@ -107,7 +107,7 @@ export default {
 }
 ```
 
-<br></details>
+</details>
 
 
 ## Configuration
