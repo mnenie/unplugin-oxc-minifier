@@ -1,7 +1,7 @@
 {
   "name": "unplugin-oxc-minifier",
   "type": "module",
-  "version": "0.0.1-beta.1",
+  "version": "1.0.0",
   "description": "Unofficial unplugin for oxc-minifier package of oxidation compiler tools",
   "author": "Alex Peshkov <1alexpeshkov@gmail.com>",
   "license": "MIT",
@@ -25,20 +25,26 @@
     "esbuild"
   ],
   "exports": {
-    ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
-    },
+    ".": "./dist/index.mjs",
+    "./esbuild": "./dist/esbuild.mjs",
+    "./rolldown": "./dist/rolldown.mjs",
+    "./rollup": "./dist/rollup.mjs",
+    "./rspack": "./dist/rspack.mjs",
+    "./vite": "./dist/vite.mjs",
+    "./webpack": "./dist/webpack.mjs",
     "./package.json": "./package.json"
   },
-  "main": "./dist/index.cjs",
+  "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
-  "types": "./dist/index.d.cts",
+  "types": "./dist/index.d.mts",
   "files": [
     "dist"
   ],
   "publishConfig": {
     "access": "public"
+  },
+  "engines": {
+    "node": ">=20.19.0"
   },
   "scripts": {
     "build": "tsdown",
@@ -62,13 +68,13 @@
   "devDependencies": {
     "@antfu/eslint-config": "^6.2.0",
     "@antfu/ni": "^27.0.1",
-    "@antfu/utils": "^9.3.0",
     "@types/node": "^24.10.1",
     "@vitest/coverage-v8": "4.0.14",
     "bumpp": "^10.3.1",
     "eslint": "^9.39.1",
     "execa": "^9.6.0",
     "husky": "^9.1.7",
+    "importx": "0.5.2",
     "lint-staged": "^16.2.7",
     "rollup": "^4.53.3",
     "taze": "^19.9.0",
