@@ -6,6 +6,7 @@ export default antfu(
     type: 'lib',
     stylistic: true,
     typescript: true,
+    markdown: false,
   },
   {
     rules: {
