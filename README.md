@@ -61,7 +61,6 @@ export default {
 
 </details>
 
-
 <details>
 <summary>Rspack</summary><br>
 
@@ -76,7 +75,6 @@ export default {
 ```
 
 </details>
-
 
 <details>
 <summary>esbuild</summary><br>
@@ -107,7 +105,6 @@ export default {
 ```
 
 </details>
-
 
 ## Configuration
 
@@ -205,6 +202,10 @@ export default {
   ],
 }
 ```
+
+## Benchmarks
+
+https://github.com/privatenumber/minification-benchmarks
 
 ## License
 
