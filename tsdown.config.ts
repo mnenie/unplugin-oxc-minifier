@@ -1,9 +1,15 @@
 import { execa } from 'execa'
 import { defineConfig } from 'tsdown'
 
+const { plugins } = await import('importx').then(x => x.import('./utils/plugins', import.meta.url))
+
 export default defineConfig({
-  entry: ['core/index.ts'],
-  format: ['cjs', 'esm'],
+  entry: {
+    index: './core/index.ts',
+    ...plugins,
+  },
+  sourcemap: false,
+  exports: true,
   clean: true,
   define: {
     __DEV__: 'false',
