@@ -3,6 +3,8 @@ import type { FilterPattern } from 'unplugin'
 
 type Merge<T, U> = Pick<T, Exclude<keyof T, keyof U>> & U
 
+type MappedRequired<T> = { [P in keyof T]-?: T[P] }
+
 export interface UnpluginOptions extends MinifyOptions {
   /**
    * @default [/\.[cm]?[jt]sx?$/],
@@ -13,10 +15,6 @@ export interface UnpluginOptions extends MinifyOptions {
    */
   exclude?: FilterPattern
   enforce?: 'pre' | 'post' | undefined
-}
-
-type MappedRequired<T> = {
-  [P in keyof T]-?: T[P]
 }
 
 export type UnpluginOptionsResolved = Merge<MappedRequired<UnpluginOptions>, Pick<UnpluginOptions, 'enforce'>>

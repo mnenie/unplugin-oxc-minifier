@@ -1,6 +1,6 @@
 import type { MinifyOptions } from 'oxc-minify'
 
-export const options: MinifyOptions = {
+export const options = {
   compress: {
     target: 'esnext',
   },
@@ -9,4 +9,4 @@ export const options: MinifyOptions = {
     removeWhitespace: true,
   },
   sourcemap: false,
-}
+} as const satisfies MinifyOptions
