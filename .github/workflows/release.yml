@@ -39,6 +39,7 @@ jobs:
         with:
           node-version: 24
           cache: pnpm
+          registry-url: https://registry.npmjs.org/
       - run: pnpm install --no-frozen-lockfile
 
       - name: check if version exists
@@ -54,7 +55,10 @@ jobs:
 
       - name: publish
         if: steps.check_version.outputs.error == 'false' && !contains(github.event.head_commit.message, '[skip release]')
-        run: npm -r publish --access public --no-git-checks
+        run: npm publish --access public --provenance
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_CONFIG_PROVENANCE: true
 
       - name: version exists
         if: steps.check_version.outputs.error == 'true'
