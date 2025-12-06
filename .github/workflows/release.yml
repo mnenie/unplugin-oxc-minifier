@@ -53,8 +53,11 @@ jobs:
             echo "error=false" >> $GITHUB_OUTPUT
           fi
 
+      - name: tsdown build
+        run: pnpm build
+
       - name: publish
-        if: steps.check_version.outputs.error == 'false' && !contains(github.event.head_commit.message, '[skip release]')
+        if: steps.check_version.outputs.error == 'false' && steps.tsdown_build.outputs.success == 'true' && !contains(github.event.head_commit.message, '[skip release]')
         run: npm publish --access public --provenance
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

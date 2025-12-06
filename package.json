@@ -1,7 +1,7 @@
 {
   "name": "unplugin-oxc-minifier",
   "type": "module",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Unofficial unplugin for oxc-minifier package of oxidation compiler tools",
   "author": "Alex Peshkov <1alexpeshkov@gmail.com>",
   "license": "MIT",
