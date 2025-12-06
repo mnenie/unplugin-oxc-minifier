@@ -18,7 +18,7 @@ jobs:
       id-token: write
 
     env:
-        ALLOWED_USERS: ${{ secrets.ALLOWED_PUBLISHERS }}
+      ALLOWED_USERS: ${{ secrets.ALLOWED_PUBLISHERS }}
 
     steps:
       - name: is allowed
