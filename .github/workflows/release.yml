@@ -1,0 +1,63 @@
+name: release
+
+on:
+  workflow_run:
+    workflows: [ci checks]
+    types:
+      - completed
+    branches:
+      - main
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    if: github.event.workflow_run.conclusion == 'success'
+
+    permissions:
+      contents: write
+      id-token: write
+
+    env:
+        ALLOWED_USERS: ${{ secrets.ALLOWED_PUBLISHERS }}
+
+    steps:
+      - name: is allowed
+        run: |
+          ALLOWED_USERS="${{ secrets.ALLOWED_PUBLISHERS }}"
+          if [[ ",${ALLOWED_USERS}," != *",${{ github.actor }},"* ]]; then
+            echo "::error::${{ github.actor }}"
+            exit 1
+          fi
+
+      - name: checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+
+      - run: corepack enable
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --no-frozen-lockfile
+
+      - name: check if version exists
+        id: check_version
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+
+          if npm view ${{ github.repository }}@VERSION version > /dev/null 2>&1; then
+            echo "error=true" >> $GITHUB_OUTPUT
+          else
+            echo "error=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: publish
+        if: steps.check_version.outputs.error == 'false' && !contains(github.event.head_commit.message, '[skip release]')
+        run: npm -r publish --access public --no-git-checks
+
+      - name: version exists
+        if: steps.check_version.outputs.error == 'true'
+        run: |
+          echo "::error::please bump the version before releasing. "
+          exit 1
